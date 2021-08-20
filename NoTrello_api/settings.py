@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-%u+kz9+odn7$m3nj#-cyledjudbc$%a_c)3w+nzuj)e8rmh@n_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'agile-earth-74098.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'https://notrello-backend.herokuapp.com']
 
 
 # Application definition
