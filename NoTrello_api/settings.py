@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['localhost', 'notrello-backend.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'bcrypt',
     'corsheaders',
     'rest_framework',
     'list_api',
