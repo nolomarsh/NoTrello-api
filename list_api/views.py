@@ -1,9 +1,49 @@
 from django.db.models.query import QuerySet
 from rest_framework import generics
-from .serializers import CardSerializer, ListSerializer
-from .models import Card, List
+from .serializers import CardSerializer, ListSerializer, UserAccountSerializer
+from .models import Card, List, UserAccount
 
+
+#Allows user to create and check pw
+from django.contrib.auth.hashers import make_password, check_password
+#Sends JSON as a response
+from django.http import JsonResponse
+#allows you to dictionaries into JSON
+import json
 # Create your views here.
+
+
+class UserAccountList(generics.ListCreateAPIView):
+    queryset = UserAccount.objects.all().order_by('id')
+    serializer_class = UserAccountSerializer
+
+class UserAccountDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = UserAccount.objects.all().order_by('id')
+    serializer_class = UserAccountSerializer
+
+#function that performs the auth
+def check_login(request):
+    #if a get request is made return and empty {}
+    if request.method =='GET':
+        return JsonResponse({})
+    #check for put
+    if request.method =='PUT':
+        #make the request JSON format
+        jsonRequest = json.loads(request.body)
+        username = jsonRequest['username']
+        password = jsonRequest['password']
+    
+        #see if email exists in DB
+        if UserAccount.objects.get(username=username):
+            user = UserAccount.objects.get(username=username)
+            if check_password(password, user.password):
+                return JsonResponse({'id':user.id, 'email': user.email})
+            else: 
+                return JsonResponse({})
+        else:
+            return JsonResponse({})
+
+
 class List_list(generics.ListCreateAPIView):
     queryset = List.objects.all().order_by('id')
     serializer_class = ListSerializer
@@ -19,3 +59,4 @@ class CardList(generics.ListCreateAPIView):
 class CardDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Card.objects.all().order_by('id')
     serializer_class = CardSerializer
+
