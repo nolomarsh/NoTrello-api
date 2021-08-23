@@ -39,9 +39,9 @@ def check_login(request):
             if check_password(password, user.password):
                 return JsonResponse({'id':user.id, 'username': user.username})
             else: 
-                return JsonResponse({})
+                return JsonResponse({'password': ['Error wrong password']})
         else:
-            return JsonResponse({})
+            return JsonResponse({'username': ['Error no user with this username exists']})
 
 
 class List_list(generics.ListCreateAPIView):
