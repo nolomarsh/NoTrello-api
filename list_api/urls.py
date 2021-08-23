@@ -19,6 +19,8 @@ urlpatterns = [
     #requires an email an email and password field 
     #email must be unique
     #pw will be hashed using bcrypt prior to being stored in db
+    #if username already exist an array is returned 
+        #username: [0]
 #get api/useraccount/id will return a single user
     #put will update a single user - password revisions will be hashed prior to being put in the db
     #both email and pw must be sent in request
