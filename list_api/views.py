@@ -33,11 +33,11 @@ def check_login(request):
         username = jsonRequest['username']
         password = jsonRequest['password']
     
-        #see if email exists in DB
+        #see if username exists in DB
         if UserAccount.objects.get(username=username):
             user = UserAccount.objects.get(username=username)
             if check_password(password, user.password):
-                return JsonResponse({'id':user.id, 'email': user.email})
+                return JsonResponse({'id':user.id, 'username': user.username})
             else: 
                 return JsonResponse({})
         else:
