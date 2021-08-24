@@ -39,10 +39,11 @@ def check_login(request):
             if check_password(password, user.password):
                 return JsonResponse({'id':user.id, 'username': user.username})
             else: 
-                return JsonResponse({'status':'false', 'password': ['Error wrong password']}, status=500)
+                return JsonResponse({'status':'false', 'message': 'Error wrong password'}, status=500)
         else:
-            return JsonResponse({'status':'false', 'username': ['Error no user with this username exists']}, status=500)
-
+            return JsonResponse({'status':'false', 'message': 'Error no user with this username exists'}, status=500)
+    if request.method == 'DELETE':
+        return JsonResponse({})
 
 class List_list(generics.ListCreateAPIView):
     queryset = List.objects.all().order_by('id')
