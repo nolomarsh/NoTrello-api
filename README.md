@@ -7,14 +7,14 @@ IDEA: TRELLO V2.0
 https://git.generalassemb.ly/Software-Engineering-Immersive-Remote/SEIR-SmellyCat/tree/master/projects/project_4
 
 Models:
--List: (one to many with Card)
-    List (Grouped by Id):
+- List: (one to many with Card)
+    - List (Grouped by Id):
         - Title varChar
         - Description text
         - Cards Array
         - Timestamp
--Card: Each item that is added to list is a Card/Post
-    Card (Grouped by Id with List):
+- Card: Each item that is added to list is a Card/Post
+    - Card (Grouped by Id with List):
         - Name
         - Body
         - Labels
@@ -22,8 +22,9 @@ Models:
         - Status (Bool)
 -User: Password encrypted using Bcrypt and csrf token attached
 
-"https://notrello-backend.herokuapp.com/" + ⬇️
-    (Full CRUD For List, Cards, and Users)
+https://notrello-backend.herokuapp.com/ + ⬇️
+    
+- (Full CRUD For List, Cards, and Users)
     - get api/list will return all lists
         - post will create new list
         - ... etc
