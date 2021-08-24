@@ -14,19 +14,3 @@ urlpatterns = [
 ]
 
 
-#get api/useraccount will return all users 
-    #post will add new user to the db
-    #requires an email an email and password field 
-    #email must be unique
-    #pw will be hashed using bcrypt prior to being stored in db
-    #if username already exist an array is returned 
-        #username: [0]
-#get api/useraccount/id will return a single user
-    #put will update a single user - password revisions will be hashed prior to being put in the db
-    #both email and pw must be sent in request
-    #delete will delete one user
-#get api/useraccount/login that will return an empty object
-    #put will find a user in the db by their email and compare their hashed pw to pw in the request
-    #if match a user obj will be returned that contains the user email and id but not the pw
-    #if they do not match an empty obj will be returned 
-    #if user email does not exist in the db and empty obj will be returned
