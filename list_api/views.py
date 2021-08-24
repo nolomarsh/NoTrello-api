@@ -32,16 +32,15 @@ def check_login(request):
         jsonRequest = json.loads(request.body)
         username = jsonRequest['username']
         password = jsonRequest['password']
-    
         #see if username exists in DB
         if UserAccount.objects.filter(username=username):
             user = UserAccount.objects.get(username=username)
             if check_password(password, user.password):
                 return JsonResponse({'id':user.id, 'username': user.username})
             else: 
-                return JsonResponse({'status': 'Error wrong password'}, status=500)
+                return JsonResponse({'password': 'wrong password'})
         else:
-            return JsonResponse({'status': 'Error no user with this username exists'}, status=500)
+            return JsonResponse({'username': 'username does not exist'})
     if request.method == 'DELETE':
         return JsonResponse({})
 

@@ -17,3 +17,5 @@ class Card(models.Model):
 class UserAccount(models.Model):
     username = models.CharField(max_length=75, unique=True)
     password = models.CharField(max_length=1000)
+
+entry_list = list(UserAccount.objects.all())
