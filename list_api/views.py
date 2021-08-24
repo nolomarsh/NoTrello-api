@@ -38,9 +38,9 @@ def check_login(request):
             if check_password(password, user.password):
                 return JsonResponse({'id':user.id, 'username': user.username})
             else: 
-                return JsonResponse({'password': 'wrong password'})
+                return JsonResponse({'error': 'wrong password'})
         else:
-            return JsonResponse({'username': 'username does not exist'})
+            return JsonResponse({'error': 'username does not exist'})
     if request.method == 'DELETE':
         return JsonResponse({})
 
