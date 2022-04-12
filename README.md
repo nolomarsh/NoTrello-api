@@ -1,7 +1,7 @@
 # NoTrello
 Link To App: 
     
-    https://notrello.herokuapp.com/
+    https://nolo-notrello.herokuapp.com/
     
 Front-End Link:  https://github.com/nolomarsh/notrello
 
